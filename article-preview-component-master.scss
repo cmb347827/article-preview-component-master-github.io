@@ -1,0 +1,160 @@
+//beautified at 
+
+$container__form-xs: 375;
+$container__form-sm: 576;
+$container__form-md: 768;
+$container__form-lg: 992;
+$container__form-xl: 1200;
+$container__form-xxl: 1400;
+
+$font-size: 13px;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$colors : (Very Dark Grayish Blue: hsl(217, 19%, 35%), Desaturated Dark Blue: hsl(214, 17%, 51%), Grayish Blue: hsl(212, 23%, 69%), Light Grayish Blue: hsl(210, 46%, 95%), White: hsl(192, 15%, 99%));
+$fallback-colors: (DeepSkyBlue4 SlateBlue4 SkyBlue4 SkyBlue3 Snow);
+
+@mixin bg-color($color,$fallback-color){
+    background-color: $fallback-color;
+    background-color: $color;
+}
+@mixin font-color($color,$fallback-color){
+    color: $fallback-color;
+	color: $color;
+}
+@mixin width($grid-size){
+    width: $grid-size * 1px;
+}
+
+@mixin border-radius($radius...){
+    border-radius: $radius;
+}
+@mixin margin($args...){
+    margin: $args;
+}
+@mixin padding($args...){
+    padding: $args;
+}
+
+
+*,::before,::after{
+	box-sizing:border-box;
+}
+html, body{
+	width: 100vw;
+	height: 100vh;
+	overflow: auto;
+	font: $font-weight-medium 'Manrope', sans-serif;
+	@include bg-color(map-get($colors, Light Grayish Blue), nth($fallback-colors, 4));
+	@media screen and (min-width: $container__form-xxl * 1px){ 
+	   
+	}
+	
+}
+
+h1{
+    
+}
+
+main{
+	overflow: auto;
+	width: 100%;
+	display:grid;
+	min-height: 100vh;
+	place-content: center;
+	
+	
+	.container{
+	    @include width($container__form-xs);
+		
+	    img:first-of-type:not(.avatar) {
+		   @include border-radius(35px 35px 0 0);
+		   @media screen and (min-width: $container__form-xxl * 1px){
+		       @include border-radius(35px 0 0 35px);
+		   }
+		}
+		
+		.white{
+		    @include bg-color(map-get($colors, White), nth($fallback-colors, 5));
+			@include border-radius(0 0 35px 35px);
+			p{
+			   font: $font-weight-medium 'Manrope', sans-serif;
+			   @include font-color(map-get($colors, Desaturated Dark Blue), nth($fallback-colors, 2));
+			}
+			.test{
+		       @include margin(80px 0 0 0);
+		    }
+		    .text-uppercase{
+		       @include font-color(map-get($colors, Grayish Blue), nth($fallback-colors, 3));
+		    }
+		
+		    .hide{
+		       display: flex;
+		       flex-flow: row wrap;
+		       justify-content: flex-end;
+		       align-self: end;
+		      .avatar{
+		          width: 55px;
+			      height:55px;
+			      @include border-radius(50%);
+		      }
+			  span{
+			     font-weight: $font-weight-bold;
+			  }
+			  time{
+			     @include font-color(map-get($colors, Grayish Blue), nth($fallback-colors, 3));
+			  }
+		    }
+		    .btn {
+		       @include border-radius(50%);
+		       @include bg-color(map-get($colors, Light Grayish Blue), nth($fallback-colors, 4));
+		    }
+		
+		    .hide-show{
+		       display:none;
+		       height: 80px;
+		       border:none;
+		       position: relative;
+		       bottom: 0;
+		       right: 0;
+		       @include bg-color(map-get($colors, Very Dark Grayish Blue), nth($fallback-colors, 1));
+			   @include border-radius(15px);
+		       .fa-brands{ 
+			       @include font-color(map-get($colors, White), nth($fallback-colors, 5));
+			   }
+		       @media screen and (min-width: $container__form-xxl * 1px){
+		            bottom: 1em;
+		            right: -12em;
+				    z-index: 999;
+				    //@include border-radius(15px);
+		       }
+		     }
+			 .arrow-down {
+                 width: 0; 
+                 height: 0; 
+                 border-left: 20px solid transparent;
+                 border-right: 20px solid transparent;
+                 border-top: 20px solid map-get($colors, Very Dark Grayish Blue);
+				 transform: translateY(130%);
+				 margin-left: 49%;
+             }
+		     @media screen and (min-width: $container__form-xxl * 1px){
+			      @include border-radius(0 35px 35px 0);
+		     }
+		}
+		
+	}
+	
+    
+	@media screen and (min-width: $container__form-xxl * 1px){ 
+	    
+	    .container{
+	        @include width($container__form-xxl);
+		}
+    }
+	
+}
+footer{
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+}
